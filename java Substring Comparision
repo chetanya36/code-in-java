@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution
+ {
+     public void order(String str,int k)
+     {
+         int n = str.length();
+          String arr[] = new String[n-k+1];
+          String  ch = "";
+          String temp = "";
+         for(int i=0;i<n-k+1;i++)
+         { 
+             ch = "";
+             for(int j=i;j<k+i;j++)
+             {
+                  ch = ch + str.charAt(j);
+             }
+             arr[i] = ch;
+         }
+         for(int i=0;i<n-k;i++)
+         {
+             for(int j=0;j<n-k;j++)
+             {
+              int l  = arr[j].compareTo(arr[j+1]);
+               if(l<0)
+               {
+                 temp = arr[j];
+                 arr[j] = arr[j+1];
+                 arr[j+1] = temp;
+               }
+             }
+             
+         }
+         System.out.println(arr[n-k]);
+         System.out.println(arr[0]);
+     }
+
+    public static void main(String[] args) 
+    {
+        Scanner sc  = new Scanner(System.in);
+        String str = sc.next();
+        int n = sc.nextInt();
+        Solution obj = new Solution();
+        obj.order(str,n);
+    }
+}
