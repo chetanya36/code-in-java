@@ -1,0 +1,44 @@
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+      int flag[] = new int[nums.length];
+        int freq=0,tempLength =0;
+        int Element=0,k=0;
+        Arrays.sort(nums);
+        int temp[] = new int[nums.length];
+        for(int i=0;i<nums.length;i++)
+        {
+          if(nums[i] %2 == 0)
+          {
+              temp[tempLength] = nums[i];
+              tempLength++;
+          }
+        }
+        for(int i=0;i<tempLength;i++)
+        {
+            int count=0;
+            if(flag[i]==0)
+            {
+               for(int j=0;j<tempLength;j++)
+               {
+                  if(temp[i] == temp[j])
+                  {
+                      count++;
+                      flag[i] = -1;
+                  }
+               }
+                if(freq < count)
+                {
+                    Element = temp[i];
+                    freq=count;
+                }
+                
+                // else if(freq == count)
+                // {
+                //     Element 
+                // }
+            }
+            k=count;
+        }
+        return k>0?Element :-1;
+    }
+}
