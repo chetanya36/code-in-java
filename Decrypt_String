@@ -1,0 +1,43 @@
+//Encrypt String = 51Pa*0Lp*0e
+//Decrypt String = ap1Lp1e
+import java.util.*;
+public class Main
+{
+    public String Decrypt(String str)
+    {
+        int n = str.length();
+        char ch[] = str.toCharArray();
+        int count =0;
+        char temp ;
+        String st = "";
+        for(int i=str.length()-1;i>=0;i--)
+        {
+            if(ch[i] == '*')
+            {
+              temp = ch[i-1];
+              ch[i-1] = ch[i-2];
+              ch[i-2] = temp;
+            }
+            else if(ch[i] == '0')
+            {
+                ch[i] = ch[count];
+                count++;
+            }
+        }
+        for(int i=count;i<n;i++)
+        {
+            if(ch[i] != '*')
+            st = st +ch[i];
+        }
+        return st;
+           
+    }
+	public static void main(String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	     System.out.println("Enter the Encrypt String:");
+	    String str = sc.next();
+	    Main obj = new Main();
+	    String st = obj.Decrypt(str);
+	     System.out.println(st);
+	}
+}
