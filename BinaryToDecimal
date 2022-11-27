@@ -1,0 +1,14 @@
+  public static int decimal(String A)
+    {
+		int idx = A.length()-1 ;
+        int num=0;
+        int a = 1,k=0;
+        while(idx >=0)
+        {
+           num =  A.charAt(idx)-'0';
+           k = num*a + k;
+            a  <<=1;
+             idx--;
+        }
+           return k;
+    }
