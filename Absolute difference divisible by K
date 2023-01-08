@@ -1,0 +1,16 @@
+class Solution {
+	static long countPairs(int n, int[] arr, int k) {
+	    int count=0;
+	    int rem[] = new int[k];
+	    for(int i=0;i<n;i++)
+	    {
+	        rem[arr[i]%k]++;
+	    }
+	    for(int i=0;i<k;i++){
+	        count += rem[i]*(rem[i]-1)/2;
+	    }
+	    return count;
+	}
+}
+//description
+//Given an array of integers of size n and an integer k, find all the pairs in the array whose absolute difference is divisible by k.
