@@ -1,0 +1,45 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		for(int i=0;i<n;i++)
+		{
+		    int n1  = sc.nextInt ();
+		    int n2 = sc.nextInt();
+		    int arr[] = new int[n1];
+		    int k=0;
+		    for(int j=0;j<n1;j++)
+		    {
+		        arr[j] = sc.nextInt();
+		    }
+		    for(int p=0;p<n1;p++)
+		    {
+		        k = k|arr[p];
+		    }
+		   int k3 = k^n2;
+		   int l1 = k3|k;
+		   if(l1 == n2)
+		    System.out.println(k3);
+		   else
+		     System.out.println(-1);
+		}
+	}
+}
+
+
+Chef has an array AA of length NN.
+
+Chef wants to append a non-negative integer XX to the array AA such that the bitwise OR of the entire array becomes 
+​
+  ∣ X)=Y. (Here, |∣ denotes the bitwise OR operation)
+
+Determine the minimum possible value of XX. If no possible value of XX exists, output -1−1.
