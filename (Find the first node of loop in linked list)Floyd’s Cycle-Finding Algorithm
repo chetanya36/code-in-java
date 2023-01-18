@@ -1,0 +1,52 @@
+//Floyd’s Cycle-Finding Algorithm
+class Solution {
+    //Function to find first node if the linked list has a loop.
+    public static int findFirstNode(Node head){
+        Node slow = head;
+        Node fast = head;
+        while(fast!=null && fast.next!=null)
+        {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast)
+            {
+                slow  = head;
+                while(slow!=fast)
+                {
+                    fast = fast.next;
+                    slow = slow.next;
+                }
+                return slow.data;
+            }
+        }
+        return -1;
+    }
+}
+Description
+Given a singly linked list of N nodes. Find the first node of the loop if the linked list has a loop. 
+If a loop is present return the node data of the first node of the loop else return -1
+
+
+// can be approach 2 if(it does not contain duplicate element)
+class Solution {
+    //Function to find first node if the linked list has a loop.
+    public static int findFirstNode(Node head){
+        ArrayList<Integer> arr = new ArrayList<>();
+        int k = head.data;
+        int p=0;
+        while(!arr.contains(k))
+        {
+            arr.add(k);
+            head = head.next;
+            if(head == null)
+            {
+                p=1;
+                break;
+            }
+            k = head.data;
+            //System.out.print(k+" ");
+            
+        }
+        return p==0?k:-1;
+    }
+}
