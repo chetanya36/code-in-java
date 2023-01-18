@@ -1,0 +1,36 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		for(int i=0;i<n;i++)
+		{
+		    int n1 = sc.nextInt();
+		    int arr[] = new int[2*n1];
+		    int min=Integer.MAX_VALUE;
+		    for(int j=0;j<2*n1;j++)
+		       arr[j] =  sc.nextInt();
+		    Arrays.sort(arr);
+		    int k=0;
+		    for(int j=0;j<2*n1-n1+1;j++)
+		    {
+		             min  =  Math.min(min,Math.abs(arr[j]-arr[j+n1-1]));
+		    }
+		   System.out.println(min);
+		}
+	}
+}
+
+
+description
+Chef has two arrays A and B of the same size In one operation, Chef can:Choose two integers 
+Chef came up with a task to find the minimum possible value oA max −A min​) after performing the swap operation any (possibly zero) number of times.
+Since Chef is busy, can you help him solve this task?
