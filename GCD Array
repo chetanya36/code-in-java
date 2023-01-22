@@ -1,0 +1,55 @@
+class Solution {
+    public static int solve(int N, int K, int[] arr) {
+        int sum =0;
+        for(int i=0;i<N;i++)
+        {
+            sum +=arr[i];
+        }
+        ArrayList<Integer> factors = new ArrayList<>();
+        for(int i=1;i*i<=sum;i++)
+        {
+            if(sum%i==0)
+            {
+                factors.add(i);
+                if(i!=sum/i)   // 36 i=6
+                factors.add(sum/i);
+            }
+        }
+        Collections.sort(factors);
+        
+            for(int i=1;i<N;i++)
+            {
+                arr[i] = arr[i]+arr[i-1];
+            }
+        int ans=1;
+        for(int i=factors.size()-1;i>=0;i--)
+        {
+            int count_of_SA=0;
+            for(int j=0;j<N;j++)
+            {
+                if(arr[j] % factors.get(i)==0)
+                {
+                    count_of_SA++;
+                }
+            }
+            if(count_of_SA >=K)
+            {
+                ans = factors.get(i);
+                break;
+            }
+        }
+        return ans;
+    }
+}
+
+Description
+You are given an array, arr of length N, and also a single integer K . Your task is to split the array arr into K non-overlapping, non-empty subarrays.
+For each of the subarrays, you calculate the sum of the elements in it. Let us denote these sums as S1, S2, S3, ..., SK. 
+Where Si denotes the sum of the elements in the ith subarray from left.
+Find the maximum value of G that can be obtained. 
+The array may contain duplicate elements
+
+N = 5
+K = 4
+arr[] = {6, 7, 5, 27, 3}
+output = 3
