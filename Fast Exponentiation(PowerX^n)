@@ -1,0 +1,17 @@
+public class Main
+{
+	public static void main(String[] args) {
+		int a =3,N=5;
+		int ans =1;
+		while(N>0)
+		{
+		    if((N&1)!=0){
+		        ans = ans*a;
+		    }
+		    a = a*a;
+		   N =  N>>1;
+		}
+		System.out.println(ans);
+	}
+}
+TIme complexity = O(logN)
