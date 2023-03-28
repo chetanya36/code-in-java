@@ -1,0 +1,57 @@
+class Solution 
+{ 
+    int countSubstring(String S) 
+    { 
+        int ans=0;
+        for(int i=0;i<S.length();i++)
+        {
+            int c=0;
+            for(int j=i;j<S.length();j++)
+            {
+                if((int)S.charAt(j)>=(int)'a'&&(int)S.charAt(j)<=(int)'z')
+                    c++;
+                else
+                    c--;
+                if(c==0)
+                    ans++;
+            }
+        }
+        return ans;
+    }
+} 
+
+
+brute force
+
+
+import java.util.*;
+class Main
+{ 
+    public static void main(String args[])
+    {
+        String S = "dDdD";
+        ArrayList<String> List = new ArrayList<>();
+        for(int i=0;i<S.length();i++)
+        {
+            for(int j=i+1;j<S.length();j++)
+            {
+               String  str = S.substring(i, j+1);
+                    int L=0,U=0;
+                    for(int k=0;k<str.length();k++)
+                    {
+                        if(str.charAt(k)>=65 && str.charAt(k)<=90)
+                          L++;
+                        else
+                        U++;
+                    }
+                    if(U==L)
+                    List.add(str);
+            }
+             
+        }
+        System.out.println(List.size());
+    }
+} 
+
+Description
+count the number of substring which contain equal number upper case and lower case letter
