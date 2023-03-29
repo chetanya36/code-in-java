@@ -1,0 +1,21 @@
+class Tree
+{
+    
+    int countLeaves(Node node) 
+    {
+        int count=0;
+      Queue<Node> q  = new LinkedList<>();
+      q.add(node);
+      while(!q.isEmpty())
+      {
+          Node currNode  = q.remove();
+          if(currNode.left!=null)
+          q.add(currNode.left);
+          if(currNode.right!=null)
+          q.add(currNode.right);
+          if(currNode.left==null && currNode.right == null)
+          count++;
+      }
+      return count;
+    }
+}
