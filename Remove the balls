@@ -1,0 +1,40 @@
+class pair
+{
+    int p1;
+    int p2;
+    pair(int p1,int p2)
+    {
+        this.p1 = p1;
+        this.p2 = p2;
+    }
+}
+class Solution {
+    public static int finLength(int N, int[] color, int[] radius) {
+        Stack<pair> stack  = new Stack<>();
+        for(int i=0;i<N;i++)
+        {
+            if(!stack.isEmpty()  && stack.peek().p1 == color[i] && stack.peek().p2 == radius[i])
+            {
+                stack.pop();
+            }
+            else
+            stack.push(new pair(color[i],radius[i]));
+        }
+        return stack.size();
+    }
+}
+        
+        description
+        Input:
+N = 3
+color[] = {2, 2, 5}
+radius[] = {3, 3, 4}
+Output: 
+1
+Explanation: 
+First ball and second ball have same color 2 and 
+same radius 3.So,after removing only one ball 
+is left.It could not be removed from the array. 
+Hence, the final array has length 1.
+
+        
