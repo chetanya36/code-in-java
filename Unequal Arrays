@@ -1,0 +1,52 @@
+
+class Solution {
+    public static long solve(int N, int[] A, int[] B) {
+        ArrayList<Integer> stack1 = new ArrayList<>();
+        ArrayList<Integer> stack2 = new ArrayList<>();
+        ArrayList<Integer> stack3 = new ArrayList<>();
+        ArrayList<Integer> stack4 = new ArrayList<>();
+        Arrays.sort(A);
+        Arrays.sort(B);
+        long sum=0;
+        long ans =0;
+        for(int i=0;i<N;i++)
+        {
+            sum = sum + A[i]-B[i];
+            if(A[i]%2 == 0)
+            stack1.add(A[i]);
+            else
+            stack2.add(A[i]);
+            if(B[i]%2 == 0)
+            stack3.add(B[i]);
+            else
+            stack4.add(B[i]);
+        }
+        if(sum!=0 || stack1.size()!=stack3.size() || stack2.size()!=stack4.size())
+        return -1;
+        Collections.sort(stack1);
+         Collections.sort(stack2);
+          Collections.sort(stack3);
+           Collections.sort(stack4);
+        for(int i=0;i<stack1.size();i++)
+        {
+            ans+=Math.abs(stack1.get(i) - stack3.get(i))/2;
+        }
+        for(int i=0;i<stack2.size();i++)
+        {
+            ans+=Math.abs(stack2.get(i) - stack4.get(i))/2;
+        }
+        return ans/2;
+    }
+}
+        
+Description
+You are given two arrays A and B each of length N. You can perform the following operation on array A zero or more times. 
+
+Select any two indices i and j, 1 <= i , j <= N and i != j
+Set A[i] = A[i] + 2 and A[j] = A[j]-2
+Find the minimum number of operations required to make A and B equal.
+
+Note :
+
+Two arrays are said to be equal if the frequency of each element is equal in both of them.
+Arrays may contain duplicate elements.
