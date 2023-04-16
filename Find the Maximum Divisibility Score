@@ -1,0 +1,30 @@
+class Solution {
+    public int maxDivScore(int[] nums, int[] divisors) {
+        int divcount=-1;
+        int ind =0;
+        for(int i=0;i<divisors.length;i++)
+        {
+            int div =0;
+            for(int j=0;j<nums.length;j++)
+            {
+               if(nums[j]%divisors[i] == 0)
+                   div++;
+            }
+            if(div == divcount && ind > divisors[i])
+            {
+               ind  = Math.min(divisors[i-1],divisors[i]);
+            }
+            else if(div>divcount)
+            {
+                divcount =div;
+                ind = divisors[i];
+            }
+        }
+        if(divcount == 0)
+        {
+          Arrays.sort(divisors);
+          ind = divisors[0];
+        }
+        return ind;
+    }
+}
