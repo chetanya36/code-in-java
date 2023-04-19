@@ -1,0 +1,27 @@
+class Solution 
+{ 
+    
+    boolean wifiRange(int N, String S, int X) 
+    { 
+        boolean arr[] = new boolean[N];
+        for(int i=0;i<N;i++)
+        {
+            if(S.charAt(i) == '1'){
+                arr[i] = true;
+            for(int j=1;j<=X;j++)
+            {
+                if(i+j<N)
+                arr[i+j] = true;
+                if(i-j>-1)
+                arr[i-j] = true;
+            }
+            }
+        }
+        for(int i=0;i<N;i++)
+        {
+            if(arr[i]!=true)
+            return false;
+        }
+        return true;
+    }
+} 
