@@ -1,0 +1,40 @@
+class Solution {
+    public boolean isFascinating(int n) {
+        int n1 = n*2;
+        int n2 = n*3;
+        ArrayList<Integer> l1 = new ArrayList<Integer>();
+        while(n!=0)
+        {
+            l1.add(n%10);
+            n=n/10;
+        }
+        while(n1!=0)
+        {
+            l1.add(n1%10);
+            n1=n1/10;
+        }
+        while(n2!=0)
+        {
+            l1.add(n2%10);
+            n2=n2/10;
+        }
+        //System.out.println(l1);
+        if(l1.contains(0))
+        {
+            return false;
+        }
+        if(l1.size()>9)
+        {
+            return false;
+        }
+        Collections.sort(l1);
+        for(int i=0;i<l1.size()-1;i++)
+        {
+            if(l1.get(i) == l1.get(i+1)){
+                return false;
+            }
+        }
+        return true;
+        
+    }
+}
