@@ -1,0 +1,25 @@
+class Solution{
+    static int setSetBit(int x, int y, int l, int r){
+        for(int i=l-1;i<r;i++)
+        {
+           if(get(i,y)) {
+              x =  set(i,x);
+           }
+        }
+        return x;
+        
+    }
+    public static boolean get(int i,int n)
+    {
+        int bitmask = 1<<i;
+         if((bitmask & n) == 0)
+           return false;
+         else
+           return true;
+    }
+    public static int set(int i,int X){
+        int bitmask = 1<<i;
+         X =  bitmask | X;
+         return X;
+    }
+}
