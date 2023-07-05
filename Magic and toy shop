@@ -1,0 +1,29 @@
+class Solution{
+    public int minimumMagic(int n, int m, int price[], int magical_price[]){
+        int arr[] = new int[n];
+        int sum1 = 0;
+        int sum2 = 0;
+        for(int i=0;i<n;i++)
+        {
+            arr[i] = price[i] - magical_price[i];
+            sum1 = sum1+price[i];
+            sum2 = sum2+arr[i];
+        }
+        if(sum1-sum2>m)
+        {
+            return -1;
+        }
+        int need = sum1-m;
+        Arrays.sort(arr);
+        int sum =0,count=0;
+        for(int i=n-1;i>=0;i--)
+        {
+            if(sum<need)
+            {
+                sum = sum+arr[i];
+                count++;
+            }
+        }
+        return count;
+    }
+}
