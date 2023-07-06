@@ -27,9 +27,9 @@ public class Main
 	    
 	    while(start<end)
 	    {
-	        while(arr[start]<=pivot)
+	        while(arr[start]<=pivot && start<ub)
 	           start++;
-	        while(arr[end] >pivot)
+	        while(arr[end] >pivot && end>=lb)
 	           end--;
 	        if(start<end)
 	        {
