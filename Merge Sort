@@ -1,0 +1,60 @@
+public class Main
+{
+	public static void main(String[] args) {
+		int arr[] = {15,5,24,8,1,3,16,10,20};
+		Mergesort(arr,0,arr.length-1);
+		for(int i=0;i<arr.length;i++)
+		{
+		    System.out.print(arr[i]+" ");
+		}
+		
+	}
+	public static void Mergesort(int arr[],int lb,int ub)
+	{
+	    if(lb<ub)
+	    {
+	    int mid = (lb+ub)/2;
+	    Mergesort(arr,lb,mid);
+	    Mergesort(arr,mid+1,ub);
+	    Merge(arr,lb,mid,ub);
+	    }
+	}
+	public static void Merge(int arr[],int lb,int mid,int ub)
+	{
+	    int b[] = new int[ub-lb+1];
+	    int k=0,i=lb,j=mid+1;
+	    while(i<=mid && j<=ub){
+	        if(arr[i]<arr[j])
+	        {
+	            b[k] = arr[i];
+	            i++;
+	        }
+	        else
+	        {
+	            b[k] = arr[j];
+	            j++;
+	        }
+	        k++;
+	    }
+	    if(i<=mid)
+	    {
+	        while(i<=mid)
+	        {
+	            b[k] = arr[i];
+	            k++;
+	            i++;
+	        }
+	    }
+	    else{
+	        while(j<=ub)
+	        {
+	            b[k] = arr[j];
+	            j++;
+	            k++;
+	        }
+	    }
+	    for(int g1=0,g2=lb;g1<b.length;g1++,g2++){
+	          arr[g2] = b[g1];
+	    }
+	}
+}
