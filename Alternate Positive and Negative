@@ -1,0 +1,51 @@
+public class Main
+{
+	public static void main(String[] args) {
+// 		int arr[] = {-5,0,2,8,-2,-8,-7,7,1};
+		int arr[] = {1, 2, 3, -1, -2, -3 };
+		int new_arr[] = new int[arr.length];
+			int n = arr.length;
+		int pos1 =0,neg1=0;
+		for(int i=0;i<arr.length;i++)
+		{
+		    if(arr[i]>=0)
+		    pos1++;
+		    else
+		      neg1++;
+		}
+		int pos[] = new int[pos1];
+		int neg[] = new int[neg1];
+		int count1=0,count2 = 0;
+		for(int i=0;i<n;i++)
+		{
+		    if(arr[i]>=0)
+		    {
+		        pos[count1] = arr[i];
+		        count1++;
+		    }
+		    else{
+		        neg[count2] = arr[i];
+		        count2++;
+		    }
+		}
+		int t1=0,t2=0;
+		for(int i=0;i<n;i++)
+		{
+		    if(i%2==0)
+		    {
+		        new_arr[i] = pos[t1];
+		        t1++;
+		    }
+		    else{
+		        new_arr[i] = neg[t2];
+		        t2++;
+		    }
+		}
+		System.out.print("["+new_arr[0]);
+		for(int i=1;i<n;i++)
+		{
+		    System.out.print(", "+new_arr[i]);
+		}
+		System.out.print("]");
+	}
+}
