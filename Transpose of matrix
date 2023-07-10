@@ -1,0 +1,22 @@
+class Solution
+{
+    public void transpose(int n,int a[][])
+    {
+        int fix=0;
+        for(int k=0;k<n;k++)
+        {
+            for(int i=k,j=k;i<n-1;i++,j++)
+            {
+                swap1(a,i+1,j+1,fix);
+            }
+            fix++;
+        }
+        
+    }
+    public static void swap1(int arr[][],int row,int col,int fix)
+    {
+        int temp = arr[col][fix];
+        arr[col][fix] = arr[fix][row];
+        arr[fix][row] = temp;
+    }
+}
