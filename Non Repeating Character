@@ -1,0 +1,42 @@
+optimize Solution
+class Solution
+{
+    //Function to find the first non-repeating character in a string.
+    static char nonrepeatingCharacter(String s)
+    {
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(int i=0; i<s.length(); i++)
+            map.put(s.charAt(i), map.getOrDefault(s.charAt(i),0)+1);
+ 
+         for(int i=0; i<s.length(); i++)
+         if(map.get(s.charAt(i))==1)
+         return s.charAt(i);
+         
+         
+         return '$';
+    }
+}
+
+Brute Force Solution
+class Solution
+{
+    //Function to find the first non-repeating character in a string.
+    static char nonrepeatingCharacter(String S)
+    {
+        ArrayList<Character> list = new ArrayList<>();
+        for(int i=0;i<S.length();i++)
+        {
+            int count =0;
+          for(int j=0;j<S.length();j++)
+          {
+              if(S.charAt(i)==S.charAt(j))
+                count++;
+          }
+          if(count==1)
+          {
+              return S.charAt(i);
+          }
+        }
+        return '$';
+    }
+}
