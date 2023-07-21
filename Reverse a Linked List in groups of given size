@@ -1,0 +1,64 @@
+class Solution
+{
+    public static Node reverse(Node head, int k)
+    {
+         Node curr=head, prevFirst=null; 
+        boolean isFirst=true;
+         
+        while(curr!=null)
+        {
+            Node first=curr;
+            Node prev=null; int count=0;
+             while(curr!=null && count<k){
+        
+                Node next=curr.next; 
+                curr.next=prev; prev=curr; curr = next; 
+                
+                count++;
+            } 
+            
+            if(isFirst ){
+                head = prev; isFirst=false;
+            }
+            else
+            prevFirst.next=prev;
+            
+            prevFirst=first; 
+        }
+         return head;
+    }
+}
+_____________________________________________________________________________________________________
+class Solution
+{
+    public static Node reverse(Node node, int k)
+    {
+        int n = k;
+        Node curr = node;
+        while(n!=0)
+        {
+            curr = curr.next;
+            n--;
+        }
+         Node head =  reverse(node,node,curr,k);
+         Node temp = head;
+         while(temp.next!=curr)
+         {
+             temp = temp.next;
+         }
+         Node prevnext =  reverse(node,curr,null,n-k);
+         temp.next = prevnext;
+         return head;
+    }
+    public static Node reverse(Node node,Node curr,Node value,int k)
+    {
+        Node prev = value;
+        while(curr!= value)
+        {
+            Node temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
+        }
+        return prev;
+    }
