@@ -1,0 +1,51 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int total = 5;
+		int team1 = 3;
+		int team2 = 2;
+		int team3 = 9;
+		int t = 6;
+		int d = 30;
+		int create=0,resa=0,review=0;
+		// calculation of resarch days
+		int rem1 = total%team1;
+		if(rem1>0)
+		{
+		    resa = (total/team1+1)*(t+2);
+		}
+		else{
+		    resa = (int)(total/team1)*(t+2);
+		}
+		// calculation of create days
+		int quetioent1 = total/team1;
+		quetioent1 = quetioent1*t;
+		int rem2 = total%team2;
+		if(rem2>0)
+		{
+		    create = (total/team2+1)*t;
+		}
+		else{
+		    create = (int)(total/team2)*t;
+		}
+		if(total>team2)
+		create = create - quetioent1;
+		// calculation of review days
+			int quetioent2 = total/team2;
+	     	quetioent1 = quetioent1*(t-2);
+	     	int rem3 = total%team3;
+	     	if(rem3>0)
+	     	{
+	     	    review = (total/team3+1)*(t-2);
+	     	}
+	     	else{
+	     	    review = (int)(total/team3)*(t-2);
+	     	}
+	     	if(total>team3)
+	     	review  = review = quetioent2;
+	     	System.out.println(resa+" "+create+" "+review);
+	     	int sum =  resa+create+review;
+	     	System.out.println(sum);
+	}
+}
