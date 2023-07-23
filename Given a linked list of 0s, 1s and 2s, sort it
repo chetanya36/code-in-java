@@ -25,3 +25,32 @@ class Solution
        return head;
     }
 }
+____________________________________________________________________________
+Another way to solve 
+class Solution
+{
+    //Function to sort a linked list of 0s, 1s and 2s.
+    static Node segregate(Node head)
+    {
+        ArrayList<Integer> list  = new ArrayList<>();
+        Node curr  =head;
+        while(curr!=null)
+        {
+            list.add(curr.data);
+            curr = curr.next;
+        }
+        Collections.sort(list);
+        Node head2 = null;
+        for(int i=list.size()-1;i>=0;i--)
+        {
+            int value = list.get(i);
+            Node newNode = new Node(value);
+            if(head2 == null)
+            head2 = newNode;
+            newNode.next = head2;
+            head2 = newNode;
+        }
+        return head2;
+    }
+}
+
