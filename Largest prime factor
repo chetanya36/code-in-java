@@ -1,0 +1,51 @@
+Brute force Approach 
+class Solution{
+    static long largestPrimeFactor(int N) {
+        int n = N;
+        if(isPrime(N))
+        {
+            return (long)N;
+        }
+        while(n!=0)
+        {
+            if(N%n == 0)
+            {
+                if(isPrime(n))
+                 return (long)n;
+            }
+            n--;
+        }
+        return 0;
+        
+    }
+    public static boolean isPrime(int n)
+    {
+        int k =2;
+        while(k!=n)
+        {
+            if(n%k == 0)
+            return false;
+            k++;
+        }
+        return true;
+    }
+}
+
+_____________________________________________________________________________
+Optimize Solution
+
+class Solution{
+    static long largestPrimeFactor(int N) {
+        long n = 2;
+        while((n*n)<=N)
+        {
+            if(N%n ==0)
+            {
+                N /= n;
+            }
+            else
+            n++;
+        }
+        return N;
+    }
+}
