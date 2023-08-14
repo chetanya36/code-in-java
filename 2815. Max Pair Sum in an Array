@@ -1,0 +1,39 @@
+class Solution {
+    public int maxSum(int[] nums) {
+        int max = -1;
+        int n = nums.length;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                    if(reverse(nums[i],nums[j]))
+                    {
+                        int k = nums[i]+nums[j];
+                        max = Math.max(max,k);
+                    }
+                
+            }
+        }
+        return max;
+    }
+    public boolean reverse(int n1,int n2)
+    {
+        
+        int max1 = 0,max2=0;
+        while(n1!=0)
+        {
+          int rem = n1%10;
+          max1 = Math.max(max1,rem);
+          n1 /=10;
+        }
+        while(n2!=0)
+        {
+            int rem = n2%10;
+             max2 = Math.max(max2,rem);
+            n2 /=10;
+        }
+        if(max1 == max2)
+            return true;
+        return false;
+    }
+}
