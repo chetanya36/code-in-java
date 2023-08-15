@@ -1,0 +1,36 @@
+class Solution {
+
+    public static int maxOnes(int a[], int n) {
+        // Your code goes here
+        int currSum =0,maxsum=0;
+        int count=0;
+        for(int i=0;i<n;i++)
+        {
+            if(a[i] == 1)
+             count++;
+        }
+        for(int i=0;i<n;i++)
+        {
+            if(a[i] ==1)
+            {
+                a[i] = -1;
+             currSum = currSum+a[i];
+            }
+            else
+            {
+                a[i] = 1;
+                currSum = currSum+a[i];
+            }
+            if(currSum>maxsum)
+            {
+                maxsum = currSum;
+            }
+            if(currSum<0)
+            {
+                currSum=0;
+            }
+        }
+        int flipbits = count+maxsum;
+        return flipbits;
+    }
+}
