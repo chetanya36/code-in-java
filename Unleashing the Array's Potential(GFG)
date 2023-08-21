@@ -1,0 +1,21 @@
+class Solution{
+    public long maxValue(int n, int arr[]){
+        // Code Here.
+        long max =0,temp=0,p=0,diff=0;
+        long max_diff = arr[0],MIN=0,k=0;
+        for(int i=0;i<n-2;i++)
+        {
+                 max_diff = Math.max(max_diff,arr[i+1]);
+                 if(diff<(max_diff-arr[i+1]))
+                     k =i+1;
+                  diff = max_diff-arr[i+1];
+                 MIN = Math.max(MIN,diff);
+                 if((i+2)>k)
+                 {
+                   temp = (MIN*arr[i+2]);
+                 }
+                 max = Math.max(max,temp);
+        }
+        return max;
+    }
+}
