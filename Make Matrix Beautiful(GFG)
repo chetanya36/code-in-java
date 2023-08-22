@@ -1,0 +1,46 @@
+class Solution {
+    public static int findMinOperation(int N, int[][] matrix) {
+        // code here
+        int sum=0,max=0;
+        int n = N;
+        int k=0;
+        // All rows Sum
+         for(int i=0;i<N;i++)
+         {
+             sum =0;
+             k =0;
+             while(k!=n)
+             {
+              sum = sum +matrix[i][k];
+               k++;
+             }
+             max = Math.max(max,sum);
+         }
+         //All column Sum
+         for(int i=0;i<N;i++)
+         {
+             sum =0;
+             k=0;
+             while(k!=n)
+             {
+                 sum = sum +matrix[k][i];
+                 k++;
+             }
+             max = Math.max(max,sum);
+         }
+         int count =0;
+          for(int i=0;i<N;i++)
+         {
+             sum =0;
+             k =0;
+             while(k!=n)
+             {
+              sum = sum +matrix[i][k];
+               k++;
+             }
+             count = count+(max-sum);
+         }
+         
+         return count;
+    }
+}
