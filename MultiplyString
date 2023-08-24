@@ -1,0 +1,129 @@
+class Solution {
+    public String multiply(String s1,String s2)
+    {
+        //code here.
+        String n1="";
+        String n2="";
+        int rem =0,t=0,count=0;
+        if(s2.length()>s1.length())
+        {
+            String te = s2;
+            s2 = s1;
+            s1 = te;
+        }
+        if(s2.charAt(0) == '0'&& s2.length() ==1)
+        return "0";
+        for(int i=s2.length()-1;i>=0;i--)
+        {
+            int temp1=0;
+            n1="";
+            if(s2.charAt(i) == '-')
+            {
+                   count++;
+            }
+            else
+             temp1 = s2.charAt(i)-'0';
+            for(int j=s1.length()-1;j>=0;j--)
+            {
+                if(s1.charAt(j) == '-')
+                {
+                   count++;
+                }
+                 else
+                 {
+                 int temp2 = s1.charAt(j)-'0';
+                  int k = temp1*temp2+rem;
+                  int add = k%10;
+                  rem = k/10;
+                  String str = Integer.toString(add);
+                  n1 = str+n1;
+                 }
+                
+            }
+            if(rem !=0)
+            {
+                String str = Integer.toString(rem);
+                n1 = str+n1;
+            }
+            rem=0;
+            n2 =  ADD_String(n2,n1,t); 
+            t++;
+        }
+        if(n2.length() == 1)
+          return n2;
+        if(n2.charAt(0) == '0')
+        {
+            n2 = n2.substring(1);
+        }
+        if(count >= 1)
+        {
+            n2 = "-"+n2;
+        }
+        return n2;
+        
+    }
+    
+    public static String ADD_String(String str1,String str2,int i)
+    {
+        //str2 is new string 
+        //str1 is old string 
+        if(str1 == "")
+        {
+         return str2;
+        }
+        
+        while(i!=0)
+        {
+          str2 = str2+"0";
+          i--;
+        }
+         int k1 = str1.length()-1;
+         int k2 = str2.length()-1;
+         String str = "";
+         int rem = 0;
+        while(k1!=-1 && k2!=-1)
+        {
+            int n1 = str2.charAt(k2)-'0';
+            int n2 = str1.charAt(k1)-'0';
+            int temp = n1 + n2+rem;
+            rem = temp/10;
+            int t = temp%10;
+            String s = Integer.toString(t);
+            str = s + str;
+            k1--;
+            k2--;
+        }
+             if(rem !=0)
+            {
+                if(str2.length() == str1.length())
+                {
+                   String  st = Integer.toString(rem);
+                   str = st+str;
+                }
+                else
+                {
+                rem = rem+str2.charAt(k2)-'0';
+                String st = Integer.toString(rem%10);
+                str = st+str;
+                
+                }
+                k2--;
+                if(k2 == -1 && rem/10!=0)
+                {
+                    str =  Integer.toString(rem/10)+str; 
+                }
+                if(rem/10!=0 && k2!=-1)
+                {
+                  rem = rem/10+str2.charAt(0)-'0';
+                  str =  Integer.toString(rem)+str; 
+                  k2--;
+                }
+            }
+        
+            if(k2>-1){
+             str = str2.substring(0,k2+1)+str;
+            }
+            return str;
+         
+    }
+}
