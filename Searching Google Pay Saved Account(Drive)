@@ -1,0 +1,71 @@
+import java.util.*;
+public class Main
+{
+    public static void sort2D(String arr[][])
+    {
+        Arrays.sort(arr, new Comparator<String[]>()  {
+            public int compare(String[] val1,String[] val2)
+            {
+                long e1 = Long.parseLong(val1[0]);
+                long e2 = Long.parseLong(val2[0]);
+                if(e1>e2)
+                 return 1;
+                else
+                 return -1;
+            }
+        });
+    }
+    
+    static String[][] solve(int N, String[][] A, String D,String V)
+    {
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        int index=-1;
+        String arr[] = {"bank_account_number","account_holder_first_name","account_holder_last_name","registered_mobile_number","branch_code"};
+        for(int i=0;i<5;i++)
+        {
+            if(arr[i] == D)
+             {
+                 index = i;
+                 break;
+             }
+        }
+        for(int i=0;i<A.length;i++)
+        {
+            ArrayList<String> list = new ArrayList<>();
+            if(A[i][index] == V)
+            {
+                for(int j=0;j<5;j++)
+                {
+                    list.add(A[i][j]);
+                }
+                result.add(list);
+            }
+        }
+        String result1[][] = new String[result.size()][5];
+        for(int i=0;i<result.size();i++)
+        {
+                result1[i][0] = result.get(i).get(0);
+                result1[i][1] = result.get(i).get(1);
+                result1[i][2] = result.get(i).get(2);
+                result1[i][3] = result.get(i).get(3);
+                result1[i][4] = result.get(i).get(4);
+            
+        }
+        return result1;
+    }
+	public static void main(String[] args) {
+	   String arr[][] = {{"11221909312","rohan","garg","73844728384","1022"},{"11221909566","shivam","kumar","9128494856","1022"},{"11201339211","shivam","sharma","73844728384","1987"}};
+	   sort2D(arr);
+	   String arr1[][]  = solve(3,arr,"branch_code","1022");
+	   for(int i=0;i<arr1.length;i++)
+	   {
+	       for(int j=0;j<5;j++)
+	       {
+	           System.out.print(arr1[i][j]+" ");
+	       }
+	       System.out.println();
+	   }
+	   
+	   
+ 	}
+}
