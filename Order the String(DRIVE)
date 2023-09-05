@@ -1,0 +1,49 @@
+package Drive;
+import java.util.*;
+public class Main
+{
+    
+    public static void sort(int arr[][])
+{
+    Arrays.sort(arr, new Comparator<int[]>(){
+        public int compare(int a1[],int a2[])
+        {
+        	return Integer.compare(a1[0], a2[0]);
+        }
+    });
+}
+
+	public static void main(String[] args) {
+		Scanner sc  = new Scanner(System.in);
+		String word = sc.next();
+		int n = sc.nextInt();
+		String str_array[] = new String[n];
+		int arr[][] = new int[n][2];
+		 sc.nextLine();
+		for(int i=0;i<n;i++)
+		{
+		    str_array[i] = sc.nextLine();
+		}
+		for(int i=0;i<n;i++)
+		{
+		    String[] arrOfStr = str_array[i].split("\\s");
+		    int count =0;
+		    for(int j=0;j<arrOfStr.length;j++)
+		    {
+		        if(word.equals(arrOfStr[j]))
+		          count++;
+		    }
+		    arr[i][0] = count;
+		    arr[i][1] = i;
+		}
+		sort(arr);
+		for(int i=0;i<n;i++)
+		{
+		    System.out.println(arr[i][0]+" "+arr[i][1]);
+		}
+		for(int i=0;i<n;i++)
+		{
+		    System.out.println(str_array[arr[i][1]]);
+		}
+	}
+}
