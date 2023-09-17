@@ -1,0 +1,25 @@
+class Solution {
+    public int countWays(List<Integer> nums) {
+         Collections.sort(nums, Collections.reverseOrder());
+        int count=0;
+        int n =  nums.size();
+        for(int i=0;i<nums.size();i++)
+        {
+            int flag =0;
+           if(nums.get(i)<n)
+           {
+                   if(i!=0 && n>=nums.get(i-1))
+                       flag++;
+               if(flag == 0)
+                 count++;
+           }
+            n--;
+        }
+        if(nums.get(nums.size()-1) == 0)
+            return count;
+        
+        return ++count;
+        
+        
+    }
+}
