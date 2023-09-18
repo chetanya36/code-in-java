@@ -1,0 +1,36 @@
+! way of solving
+
+class Solution{
+    
+    // Function to check if given number n is a power of two.
+    public static boolean isPowerofTwo(long n){
+        
+        // Your code here
+        long temp =n;
+        if(n == 1)
+          return true;
+        while(n!=0)
+        {
+            if(n ==2)
+               return true;
+            long mod = temp&1;
+            temp = n/2;
+            if(mod == 1)
+              return false;
+             n = n/2;
+             
+        }
+        return false;
+        
+    }
+    
+}
+_______________________________________________________________________
+2nd Way of Solving
+
+public static boolean isPowerofTwo(long n){
+    if(n <= 0)
+        return false;
+    
+    return (n & (n-1)) == 0;
+}
