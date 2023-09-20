@@ -1,0 +1,45 @@
+class Codechef
+{
+    public static int find_min(String str,String K)
+    {
+        int m = str.length();
+        int total =0;
+        for(int i=0;i<m;i++)
+        {
+            int temp =0;
+            if((str.charAt(i)-'0') >(K.charAt(i)-'0'))
+            {
+              int k1 =  (str.charAt(i)-'0')- (K.charAt(i)-'0');
+              int k2 =   10 -(str.charAt(i)-'0')+(K.charAt(i)-'0');
+               temp = Math.min(k1,k2);
+            }
+            else{
+                int k1 =  (K.charAt(i)-'0')- (str.charAt(i)-'0');
+                int k2 =   10 -(K.charAt(i)-'0')+(str.charAt(i)-'0');
+                temp = Math.min(k1,k2);
+            }
+            total +=temp;
+        }
+        return total;
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		for(int i=0;i<n;i++)
+		{
+		    int N = sc.nextInt();
+		    int M = sc.nextInt();
+		    String S = sc.next();
+		    String K = sc.next();
+		    int min = Integer.MAX_VALUE;
+		    for(int j=0;j<=N-M;j++)
+		    {
+		        String str = S.substring(j,j+M);
+		        int temp  = find_min(str,K);
+		        min = Math.min(temp,min);
+		    }
+		    System.out.println(min);
+		}
+	}
+}
