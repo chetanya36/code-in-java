@@ -1,0 +1,28 @@
+public class Main
+{
+    public static void BinarySearch(int arr[],int low,int high,int target)
+    {
+        int mid = (low+high)/2;
+        if(arr[mid] == target)
+        {
+            System.out.println("True");
+            return;
+        }
+        if(low>high)
+        {
+            System.out.println("false");
+            return;
+        }
+        if(arr[mid]>target)
+        {
+         BinarySearch(arr,low,mid-1,target);
+        }
+        else{
+            BinarySearch(arr,mid+1,high,target);
+        }
+    }
+	public static void main(String[] args) {
+	    int arr[] = {1,2,3,4,5,6};
+		BinarySearch(arr,0,5,1);
+	}
+}
