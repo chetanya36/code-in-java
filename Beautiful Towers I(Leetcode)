@@ -1,0 +1,43 @@
+class Solution {
+    public static long cal_height(List<Integer> Height,int peak)
+    {
+        int max = Height.get(peak);
+        int n = Height.size();
+        long result = max;
+        int min = max;
+        for(int i=peak;i<n-1;i++)
+        {
+            if(min>Height.get(i+1))
+            {
+                result +=Height.get(i+1);
+                min = Height.get(i+1);
+            }
+            else
+                result +=min;
+        }
+        min = max;
+         for(int i=peak;i>0;i--)
+        {
+          if(min>Height.get(i-1))
+          {
+              result += Height.get(i-1);
+              min = Height.get(i-1);
+          }
+        else 
+            result+=min;
+                 
+        }
+        return result;
+    }
+    public long maximumSumOfHeights(List<Integer> maxHeights) {
+        int n = maxHeights.size();
+        long result=0;
+        for(int i=0;i<n;i++)
+        {
+            long height = cal_height(maxHeights,i);
+            result = Math.max(height,result);
+        }
+        return result;
+        
+    }
+}
