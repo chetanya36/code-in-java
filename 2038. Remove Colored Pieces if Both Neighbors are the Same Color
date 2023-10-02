@@ -1,0 +1,70 @@
+Optmal Approach
+
+ class Solution {
+    public boolean winnerOfGame(String colors) {
+        int n = colors.length();
+        int Alice_chance =0;
+        int Bob_chance = 0;
+        int count1 = 0,count2=0;
+        for(int i=0;i<n;i++)
+        {
+            if(colors.charAt(i) == 'A')
+            {
+                if(count2>=3)
+                    Bob_chance+=count2-2;
+                 count2=0;count1++;
+            }
+            else
+            {
+                if(count1>=3)
+                    Alice_chance+=count1-2;
+                count1=0;count2++;
+            }
+        }
+        if(count1>=3)
+          Alice_chance+=count1-2;
+        else if(count2>=3)
+         Bob_chance+=count2-2;
+
+        if(Alice_chance<=Bob_chance)
+          return false;
+        return true;
+    }
+}
+__________________________________________________________________________________________________
+BruteForce Approach
+class Solution {
+    public boolean winnerOfGame(String colors) {
+        int n  = colors.length();
+        boolean flag = true;
+        while(true)
+        {
+            String temp1 = "AAA";
+            String temp2 = "BBB";
+            if(flag)
+            {
+               int idx =  colors.indexOf(temp1);
+               if(idx!=-1)
+               {
+                   colors = colors.substring(0,idx+1)+colors.substring(idx+2);
+               }
+               else
+               {
+                   return false;
+               }
+            }
+            else
+            {
+               int idx =  colors.indexOf(temp2);
+               if(idx!=-1)
+               {
+                 colors = colors.substring(0,idx+1)+colors.substring(idx+2);
+               }
+               else{
+                   return true;
+               }
+            }
+            flag = !flag;
+        }
+    }
+}
