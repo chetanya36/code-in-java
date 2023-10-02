@@ -1,0 +1,37 @@
+lass Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        if(left == right)
+         return head;
+         if (head == null || head.next == null)
+            return head;
+            ListNode left_node = head;
+            while(left>2)
+            {
+                left_node = left_node.next;
+                left--;
+            }
+            ListNode right_node = head;
+            ListNode curr = head;
+            if(left>1)
+            curr = left_node.next;
+        while(right!=0)
+        {
+            right_node = right_node.next;
+            right--;
+        }
+        ListNode prev = right_node;
+        while(curr!=right_node)
+        {
+            ListNode next_Node = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next_Node;
+        }
+        if(left>1)
+        {
+        left_node.next = prev;
+         return head;
+        }
+        return prev;
+    }
+}
