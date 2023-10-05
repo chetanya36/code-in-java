@@ -1,0 +1,44 @@
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        ArrayList<Integer> list = new ArrayList<>();
+        int count1=0,count2=0,elem1=0,elem2=0;
+        int n = nums.length;
+        for(int i=0;i<nums.length;i++)
+        {
+            if(count1==0 && nums[i] != elem2)
+            {
+                count1=1;
+                elem1=nums[i];
+            }
+            else if(count2==0 && nums[i]!=elem1)
+            {
+                count2 =1;
+                elem2=nums[i];
+            }
+            else if(elem1 == nums[i])
+              count1++;
+            else if(elem2 == nums[i])
+              count2++;
+            else
+            {
+                count1--;
+                count2--;
+            }
+        }
+        count1=0;
+        count2=0;
+        for(int i=0;i<n;i++)
+        {
+            if(elem1 == nums[i])
+              count1++;
+            if(elem2 == nums[i])
+              count2++;
+        }
+        int freq = n/3;
+        if(freq<count1)
+          list.add(elem1);
+        if(freq<count2 && elem1!=elem2)
+          list.add(elem2);
+        return list;
+    }
+}
