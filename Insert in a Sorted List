@@ -1,0 +1,32 @@
+class Solution {
+    Node sortedInsert(Node head1, int key) {
+        Node curr  = head1;
+        Node temp = new Node(key);
+        if(head1.data>key)
+            {
+                temp.next = curr;
+                head1 = temp;
+                return head1;
+            }
+        Node prev = curr;
+        int count =0;
+        while(curr.next!=null)
+        {
+            prev = curr;
+            curr = curr.next;
+            if(curr.data>key)
+            {
+                count++;
+               prev.next = temp;
+               temp.next = curr;
+               return head1;
+            }
+        }
+        if(count == 0)
+        {
+            prev = prev.next;
+            prev.next = temp;
+        }
+        return head1;
+    }
+}
