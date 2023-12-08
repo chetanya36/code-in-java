@@ -1,0 +1,28 @@
+class Solution {
+     StringBuilder str = new StringBuilder();
+    public String tree2str(TreeNode root) {
+        paren(root);
+       str.deleteCharAt(0);
+       str.deleteCharAt(str.length()-1);
+       return str.toString();
+    }
+    public void paren(TreeNode root)
+    {
+        if(root == null)
+          return;
+          String st = "("+root.val;
+         str.append(st);
+         if(root.left!=null)
+         {
+            paren(root.left);
+         }
+         else
+         {
+             if(root.right!=null)
+               str.append("()");
+         }
+         paren(root.right);
+         str.append(")");
+         
+    }
+}
