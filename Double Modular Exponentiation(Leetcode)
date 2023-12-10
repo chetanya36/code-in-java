@@ -1,0 +1,33 @@
+class Solution {
+    public static long fast(long x,long n,long p)
+    {
+        long ans = 1;
+        while(n>0)
+        {
+            if(n%2 ==1)
+            {
+                ans = (ans*x)%p;
+                 n--; 
+            }
+            
+             x = (x*x)%p;
+             n=n/2;
+        }
+        ans%=p;
+         return ans;
+        
+    }
+    public List<Integer> getGoodIndices(int[][] variables, int target) {
+        List<Integer> list = new ArrayList<>();
+        long pow2;
+         for(int i=0;i<variables.length;i++)
+         {
+                 long pow = fast(variables[i][0],variables[i][1],10);
+                  pow2 = fast(pow,variables[i][2],variables[i][3]);
+                if(pow2 == target)
+                   list.add(i);
+             
+         }
+        return list;
+    }
+}
