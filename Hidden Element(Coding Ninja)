@@ -1,0 +1,45 @@
+import java.util.*;
+public class Solution {
+    static int findHiddenElement(int n, int []a) {
+        int temp[] = new int[n];
+        int prev=0,idx=0;
+        for(int i=0;i<n;i++)
+        {
+            if(a[i]!=-1)
+            {
+                temp[Math.abs(a[i]-prev)-1] = Math.abs(a[i]-prev);
+                prev = a[i];
+            }
+            else
+            {
+                idx = i+1;
+                break;
+            }
+        }
+        if(idx == n)
+        {
+            return (n*(n+1))/2;
+        }
+        if(idx!=n-1)
+        {
+            prev = a[idx];
+            for(int i=idx+1;i<n;i++)
+            {
+                temp[Math.abs(a[i]-prev)-1] = Math.abs(a[i]-prev);
+                prev = a[i];
+            }
+        }
+        int result=0;
+        for(int i=0;i<n;i++)
+        {
+            if(temp[i] == 0)
+            {
+                result=i+1;
+                break;
+            }
+        }
+        if(idx-2>=0)
+          result+=a[idx-2];
+           return result;
+    }
+}
