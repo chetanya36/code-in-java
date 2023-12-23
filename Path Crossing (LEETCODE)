@@ -1,0 +1,25 @@
+class Solution {
+    public boolean isPathCrossing(String path) {
+        int N=0,W=0;
+        Set<String> set = new HashSet<>();
+        int n =path.length();
+        set.add("0,0");
+        for(int i=0;i<n;i++)
+        {
+            char ch = path.charAt(i);
+            if(ch == 'N')
+              N++;
+            else if(ch == 'S')
+              N--;
+            else if(ch == 'W')
+              W++;
+            else
+              W--;
+            String str = N+","+W;
+            if(set.contains(str))
+              return true;
+            set.add(str);
+        }
+        return false;
+    }
+}
