@@ -1,0 +1,26 @@
+Recursion Approach:
+
+class Solution {
+    public int numDecodings(String s) {
+        if(s.charAt(0) == '0')
+          return 0;
+        return CountDecode(s);
+    }
+    public int CountDecode(String str)
+    {
+        if(str.length() == 0)
+            return 1;
+            
+        if(str.charAt(0)=='0')
+            return 0;
+       int count1 = CountDecode(str.substring(1));
+       int count2=0;
+        if(str.length()>1)
+        {
+           int t = Integer.parseInt(str.substring(0,2));
+           if(t<=26)
+             count2 = CountDecode(str.substring(2));
+        }
+        return count1+count2;
+    }
+}
