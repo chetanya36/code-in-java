@@ -1,0 +1,23 @@
+class Solution {
+    String arr[] = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    List<String> list = new ArrayList<>();
+    public List<String> letterCombinations(String digits) {
+        LetterCombination(digits,"");
+        return list;
+    }
+    public void LetterCombination(String str,String ans)
+    {
+        if(str.length() == 0)
+        {
+            if(ans.length()!=0)
+            list.add(ans);
+            return;
+        }
+        char ch = str.charAt(0);
+        int n = ch-48;
+        for(int i=0;i<arr[n].length();i++)
+        {
+            LetterCombination(str.substring(1),ans+arr[n].charAt(i));
+        }
+    }
+}
