@@ -1,0 +1,15 @@
+import java.util.*;
+
+public class Solution {
+    static int canSheUnsort(int n, ArrayList<Integer> v) {
+        if(n==2)
+         return 0;
+        for(int i=1;i<n-1;i++)
+        {
+            int sum  = v.get(i+1)-v.get(i);
+            if(sum<v.get(i-1))
+               return 1;
+        }
+        return 0;
+    }
+}
