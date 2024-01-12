@@ -1,0 +1,42 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        ArrayList<ArrayList<Character>> list = new ArrayList<>();
+        for(int i=0;i<numRows;i++)
+        {
+            ArrayList<Character> l = new ArrayList<>();
+            list.add(l);
+        }
+        int temp= 0;
+        boolean flag=true;
+        while(temp!=s.length())
+        {
+            if(flag)
+            {
+                 for(int i=0;i<numRows&& temp<s.length();i++)
+                 {
+                  list.get(i).add(s.charAt(temp));
+                  temp++;
+                 }
+                 flag = false;
+            }
+            if(!flag)
+            {
+                 for(int i=numRows-2;i>0&& temp<s.length();i--)
+                 {
+                  list.get(i).add(s.charAt(temp));
+                  temp++;
+                 }
+                 flag = true;
+            }
+        }
+        String result ="";
+        for(int i=0;i<numRows;i++)
+        {
+            int size = list.get(i).size();
+            for(int j=0;j<size;j++){
+                result+=list.get(i).get(j);
+            }
+        }
+        return result;
+    }
+}
