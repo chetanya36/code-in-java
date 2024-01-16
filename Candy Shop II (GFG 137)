@@ -1,0 +1,39 @@
+class Solution{
+    public int candyShop(int n, int candies[]) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        Set<Integer> set = new HashSet<>();
+        for(int i=0;i<n;i++){
+            set.add(candies[i]);
+        }
+        int diff = set.size();
+        int count =0;
+        int sum =0;
+        int min =Integer.MAX_VALUE;
+        int si=0;
+        for(int i=0;i<n;i++){
+            if(map.containsKey(candies[i])){
+                if(map.get(candies[i]) == 0)
+                  count++;
+                map.put(candies[i],map.get(candies[i])+1);
+            }
+            else{
+                map.put(candies[i],1);
+                count++;
+            }
+             sum = sum+candies[i];
+             while(count == diff && map.get(candies[si])>1 ){
+                   sum = sum-candies[si];
+                  map.put(candies[si],map.get(candies[si])-1);
+                   if(map.get(candies[si]) == 0){
+                       count--;
+                   }
+                   si++;
+             }
+             if(count == diff)
+                   min = Math.min(sum,min);
+           
+        }
+        return min;
+        
+    }
+}
