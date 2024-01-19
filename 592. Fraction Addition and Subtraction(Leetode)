@@ -1,0 +1,71 @@
+class Solution {
+    public int gcd(int a,int b){
+        if(a == 0) 
+          return b;
+        return gcd(b%a,a);
+    }
+    public int lcm(int a,int b){
+        return (a/gcd(a,b))*b;
+    }
+
+    public int value1(int idx,String str){
+           String temp = "";
+           while(idx!=-1 && str.charAt(idx)!='-' && str.charAt(idx)!='+'){
+               temp = str.charAt(idx)+temp;
+               idx--;
+           }
+           int ele = Integer.parseInt(temp);
+           if(idx>=0 && str.charAt(idx)=='-')
+           {
+              ele =  ele-2*ele;
+           }
+           return ele;
+    }
+
+     public int value2(int idx,String str){
+           String temp = "";
+           while(idx!=str.length() && str.charAt(idx)!='-' && str.charAt(idx)!='+'){
+               temp += str.charAt(idx);
+               idx++;
+           }
+           int ele = Integer.parseInt(temp);
+           return ele;
+    }
+    public String fractionAddition(String expression) {
+        Set<String> set = new HashSet<>();
+        int rem = 0;
+        String str="";
+        ArrayList<Integer> list1 = new ArrayList<>();
+        ArrayList<Integer> list2 = new ArrayList<>();
+        for(int i=0;i<expression.length();i++){
+            if(expression.charAt(i) == '/'){
+                list1.add(value2(i+1,expression));
+            }
+            if(expression.charAt(i) == '/'){
+                  list2.add(value1(i-1,expression));
+            }
+        }
+        if(list1.size()==1){
+            int n1=list1.get(0);
+            int n2 =list2.get(0);
+          rem = Math.abs(gcd(n1,n2));
+          n1/=rem;
+          n2/=rem;
+          str = ""+n2+'/'+n1;
+          return str;
+        }
+        int k = lcm(list1.get(0),list1.get(1));
+        for(int i=2;i<list1.size();i++){
+          k =  lcm(k,list1.get(i));
+        }
+        int result = 0;
+        for(int i=0;i<list2.size();i++){
+            result+=list2.get(i)*(int)(k/list1.get(i));
+        }
+        rem = Math.abs(gcd(result,k));
+        result/=rem;
+        k/=rem;
+        str = ""+result+'/'+k;
+        return str;
+    }
+}
