@@ -1,0 +1,23 @@
+class Solution{
+    public int MaxMoney(int M,int []B,int []A)
+    {
+        int money = M;
+        int max = 0;
+        for(int i=0;i<3;i++){
+            int k = A[i]-B[i];
+            int temp = 0;
+            int result =0;
+             M = money;
+            if(k>0){
+                temp = M/B[i];
+                M = M-temp*B[i];
+                result+=temp*A[i];
+                result+=M;
+            }
+           max = Math.max(result,max);
+        }
+        if(max == 0)
+          return M;
+        return max;
+    }
+}
