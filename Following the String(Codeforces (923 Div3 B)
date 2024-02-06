@@ -1,0 +1,37 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		while(t--!=0){
+		   int size = sc.nextInt();
+		   StringBuilder result = new StringBuilder();
+		   int arr[] = new int[size];
+		   int count = 0;
+		   for(int i=0;i<size;i++){
+		       arr[i] = sc.nextInt();
+		       if(arr[i]== 0)
+		        count++;
+		   }
+		   int temp[] = new int[count];
+		   for(int i=0;i<size;i++){
+		       int k = arr[i];
+		       int idx = -1;
+		       for(int j=0;j<count;j++){
+		           if(temp[j] == k){
+		               temp[j]++;
+		               idx =j;
+		               break;
+		           }
+		       }
+		       int ch = 97+idx;
+		       char ch1 = (char)ch;
+		       result = result.append(ch1);
+		   }
+		   System.out.println(result.toString());
+		   
+		   
+		}
+	}
+}
