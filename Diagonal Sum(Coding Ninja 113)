@@ -1,0 +1,21 @@
+import java.util.*;
+public class Solution {
+    static long diagonalSum(int n, int d) {
+        long result = 0;
+        long k1=0;
+        int print = n - (Math.abs(n-d))%n;
+        if(d<=n+1){
+            d--;
+           k1=  (d*(d+1))/2;
+           k1++;
+        }
+        else{
+            k1 = (n*(n+1))/2; 
+           int k2 = (d-1)%n;
+            k1+=(k2*(2*(n-1)+(k2-1)*(-1)))/2;
+            k1++;
+        }
+        result = (print*(2*k1+(print-1)))/2;
+        return result;
+    }
+}
