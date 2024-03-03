@@ -1,0 +1,34 @@
+
+class Solution {
+    public static int luckyString(int N, String S) {
+        int si=0,ei=0;
+        int count_A=0,count_B=0,count_C=0;
+        int result = Integer.MAX_VALUE;
+        while(si<N){
+            char ch = S.charAt(si);
+            if(ch == 'A')
+              count_A++;
+            else if(ch == 'B')
+              count_B++;
+            else
+              count_C++;
+            while(count_A>1 && ei<N){
+                if(count_A>count_B && count_A>count_C)
+                    result = Math.min((si-ei+1),result);
+                char ch1 = S.charAt(ei);
+                 if(ch1 == 'A')
+                  count_A--;
+                else if(ch1 == 'B')
+                  count_B--;
+                else
+                  count_C--;
+                ei++;
+            }
+            si++;
+        }
+        if(result == Integer.MAX_VALUE)
+          return -1;
+        return result;
+    }
+}
+        
