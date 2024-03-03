@@ -1,0 +1,44 @@
+class Solution {
+    public int countSubmatrices(int[][] temp, int k) {
+        
+        int row = temp.length;
+        int col = temp[0].length;
+        for(int i=0;i<row;i++){
+            int sum = 0;
+            for(int j=0;j<col;j++){
+                sum+=temp[i][j];
+                temp[i][j] = sum;
+            }
+        }
+        int count =0;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(i==0 && j==0){
+                    if(temp[i][j]<=k)
+                        count++;
+                    else
+                        break;
+                }
+                else if(i!=0 && j==0){
+                    int temp_sum = temp[i-1][j]+temp[i][j];
+                    if(temp_sum<=k)
+                        count++;
+                    temp[i][j] = temp_sum;
+                }
+                else if(i==0 && j!=0){
+                    if(temp[i][j]<=k)
+                        count++;
+                    
+                }
+                else{
+                    int temp_sum = temp[i][j]+temp[i-1][j];
+                     if(temp_sum<=k)
+                        count++;
+                    temp[i][j] = temp_sum;
+                }
+            }
+        }
+        return count;
+        
+    }
+}
